@@ -22,6 +22,7 @@
 
     <modules>
         <module>jmh-exceptions</module>
+        <module>jmh-string</module>
     </modules>
 
     <dependencyManagement>

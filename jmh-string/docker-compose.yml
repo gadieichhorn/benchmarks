@@ -1,0 +1,8 @@
+version: '2.4'
+
+services:
+
+  dcb:
+    image: realisedatasystems/jmh-string-x64:latest
+    volumes:
+      - ../volumes/benchmark:/usr/local/benchmarks/output

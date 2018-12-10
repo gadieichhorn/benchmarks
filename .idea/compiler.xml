@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="" />
         <module name="jmh-exceptions" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="" target="1.8" />
       <module name="jmh-exceptions" target="1.8" />
     </bytecodeTargetLevel>
   </component>
