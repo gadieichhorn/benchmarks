@@ -10,27 +10,27 @@ import java.util.concurrent.TimeUnit;
 @Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 @BenchmarkMode(Mode.Throughput)
 @OutputTimeUnit(TimeUnit.SECONDS)
-public class RuntimeExceptionBenchmark {
+public class CustomExceptionBenchmark {
 
     @State(value = Scope.Thread)
-    public static class RuntimeExceptionBenchmarkState {
-        RuntimeException exception = new RuntimeException("STATIC");
+    public static class CustomExceptionBenchmarkState {
+        TestException exception = new TestException();
     }
 
     @Benchmark
-    public void create(RuntimeExceptionBenchmarkState state, Blackhole blackhole) {
+    public void create(CustomExceptionBenchmarkState state, Blackhole blackhole) {
         try {
-            throw new RuntimeException("TEST");
-        } catch (RuntimeException ex) {
+            throw new TestException();
+        } catch (TestException ex) {
             blackhole.consume(ex.getMessage());
         }
     }
 
     @Benchmark
-    public void staticThrow(RuntimeExceptionBenchmarkState state, Blackhole blackhole) {
+    public void staticThrow(CustomExceptionBenchmarkState state, Blackhole blackhole) {
         try {
             throw state.exception;
-        } catch (RuntimeException ex) {
+        } catch (TestException ex) {
             blackhole.consume(ex.getMessage());
         }
     }
